@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f6f1">
+    <meta name="description" content="Välj studieverktyg, öva och få genomtänkt återkoppling med Lärloop.">
+    <title>Din studieyta – Lärloop</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="app.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body class="workspace-page">
+    <a class="skip-link" href="#workspace-main">Hoppa till studieytan</a>
+    <header class="workspace-header">
+      <a class="brand" href="index.html" aria-label="Lärloop, tillbaka till startsidan">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>lärloop</span>
+      </a>
+      <a class="back-link" href="index.html"><span aria-hidden="true">←</span> Till startsidan</a>
+    </header>
+
+    <main class="workspace-shell" id="workspace-main">
+      <aside class="workspace-sidebar" aria-label="Välj studieverktyg">
+        <div class="sidebar-kicker">DIN STUDIEYTA</div>
+        <p class="sidebar-title">Vad vill du<br>göra idag?</p>
+        <nav class="tool-nav" aria-label="Studieverktyg">
+          <button class="tool-nav-button is-active" id="tool-write" type="button" data-tool="write" aria-current="page">
+            <span class="tool-icon tool-icon-purple" aria-hidden="true">✎</span><span><strong>Bedöm min text</strong><small>Utvecklande feedback</small></span><span class="nav-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button class="tool-nav-button" id="tool-material" type="button" data-tool="material">
+            <span class="tool-icon tool-icon-green" aria-hidden="true">▤</span><span><strong>Skapa studiematerial</strong><small>Från dina anteckningar</small></span><span class="nav-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button class="tool-nav-button" id="tool-quiz" type="button" data-tool="quiz">
+            <span class="tool-icon tool-icon-yellow" aria-hidden="true">✦</span><span><strong>Träna med quiz</strong><small>Se vad som sitter</small></span><span class="nav-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button class="tool-nav-button" id="tool-cards" type="button" data-tool="cards">
+            <span class="tool-icon tool-icon-peach" aria-hidden="true">▧</span><span><strong>Nöta begrepp</strong><small>Vändbara kort</small></span><span class="nav-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button class="tool-nav-button" id="tool-tutor" type="button" data-tool="tutor">
+            <span class="tool-icon tool-icon-blue" aria-hidden="true">✳</span><span><strong>Fråga studiekompisen</strong><small>Få en förklaring</small></span><span class="nav-arrow" aria-hidden="true">↗</span>
+          </button>
+        </nav>
+        <div class="privacy-note"><span aria-hidden="true">♡</span><p><strong>Dina ord, din takt.</strong><br>Din text lämnar inte den här demosidan.</p></div>
+      </aside>
+
+      <section class="workspace-content">
+        <div class="workspace-topline">
+          <div class="breadcrumb"><a href="index.html">Lärloop</a><span aria-hidden="true">/</span><span>Studieyta</span></div>
+          <label class="subject-picker"><span>Jag pluggar</span>
+            <select id="subject-select" aria-label="Välj ämne">
+              <option value="Svenska">Svenska</option>
+              <option value="Kemi">Kemi</option>
+              <option value="Historia">Historia</option>
+              <option value="Biologi">Biologi</option>
+              <option value="Engelska">Engelska</option>
+            </select>
+          </label>
+        </div>
+        <div class="workspace-welcome">
+          <div><div class="eyebrow"><span class="eyebrow-dot"></span> DIN PLUGGSTUND, PÅ DINA VILLKOR</div><h1>Hej, nu lär vi oss <span>något.</span></h1><p>Välj ett verktyg och börja där du är. Det behöver inte vara svårare än så.</p></div>
+          <div class="welcome-mark" aria-hidden="true"><span>✳</span><i></i></div>
+        </div>
+
+        <section class="workspace-panel writing-panel" data-panel="write" aria-labelledby="writing-title">
+          <div class="panel-heading"><div><span class="panel-overline">TEXTCOACH · <span class="selected-subject">SVENSKA</span></span><h2 id="writing-title">Få feedback som tar dig vidare.</h2><p>Klistra in din text och din uppgift. Du får återkoppling på det du kan förbättra – med konkreta exempel.</p></div><span class="panel-symbol" aria-hidden="true">✎</span></div>
+          <form id="writing-form" class="writing-form">
+            <label for="assignment-input">Vad är uppgiften?</label>
+            <input id="assignment-input" name="assignment" type="text" placeholder="Exempel: Resonera om varför källkritik är viktigt." maxlength="180">
+            <div class="editor-label-row"><label for="essay-input">Din text</label><span id="word-count">0 ord</span></div>
+            <textarea id="essay-input" name="essay" rows="9" placeholder="Klistra in texten du vill ha återkoppling på …" required></textarea>
+            <div class="writing-hint"><span aria-hidden="true">✳</span> Skriv minst ett par meningar för att få användbar feedback.</div>
+            <div class="writing-actions"><button class="button button-primary" type="submit">Ge mig feedback <span aria-hidden="true">↗</span></button><span>Tar bara en liten stund</span></div>
+          </form>
+          <section class="feedback-panel" id="feedback-panel" aria-live="polite" aria-labelledby="feedback-title" hidden>
+            <div class="feedback-header"><div><span class="panel-overline">DIN ÅTERKOPPLING</span><h3 id="feedback-title">Här är vad jag ser i din text</h3></div><span class="feedback-badge"><span aria-hidden="true">✦</span> Att öva på</span></div>
+            <p class="feedback-intro" id="feedback-intro"></p>
+            <div class="feedback-grid" id="feedback-grid"></div>
+            <div class="feedback-next"><span class="next-icon" aria-hidden="true">↗</span><div><strong>Nästa steg</strong><p id="next-suggestion"></p></div></div>
+            <details class="example-rewrite"><summary>Se ett exempel på hur du kan utveckla en mening</summary><p id="rewrite-example"></p><small>Exemplet är ett stöd – behåll din egen röst och dina egna idéer.</small></details>
+            <div class="feedback-actions"><button type="button" class="button button-dark" id="revise-button">Jag vill skriva om texten <span aria-hidden="true">↗</span></button><button type="button" class="subtle-button" id="clear-feedback">Börja om</button></div>
+            <p class="demo-disclaimer">Det här är en interaktiv demo med fördefinierad textanalys, inte en ansluten AI-tjänst. Feedbacken är ett lärstöd – inte ett betyg.</p>
+          </section>
+        </section>
+
+        <section class="workspace-panel material-panel" data-panel="material" aria-labelledby="material-title" hidden>
+          <div class="panel-heading"><div><span class="panel-overline">DINA ANTECKNINGAR · <span class="selected-subject">SVENSKA</span></span><h2 id="material-title">Gör anteckningar till pluggmaterial.</h2><p>Lägg in ditt underlag och skapa en sammanfattning, begreppskort och en övningsfråga.</p></div><span class="panel-symbol" aria-hidden="true">▤</span></div>
+          <form id="material-form" class="writing-form">
+            <label for="notes-input">Dina anteckningar</label>
+            <textarea id="notes-input" rows="8" placeholder="Klistra in ett stycke ur dina anteckningar eller skriv in viktiga begrepp …" required></textarea>
+            <div class="writing-actions"><button class="button button-primary" type="submit">Skapa mitt material <span aria-hidden="true">↗</span></button><span>Du bestämmer vad som är viktigt</span></div>
+          </form>
+          <section class="generated-material" id="generated-material" aria-live="polite" hidden>
+            <span class="panel-overline">DITT STUDIEMATERIAL</span><h3>En tydligare väg genom innehållet</h3>
+            <article class="generated-summary"><span>✦ SAMMANFATTNING</span><p id="summary-output"></p></article>
+            <div class="generated-lower"><article class="generated-terms"><span>▤ NYCKELORD</span><ul id="terms-output"></ul></article><article class="generated-question"><span>↗ TESTA DIG SJÄLV</span><p id="question-output"></p></article></div>
+            <p class="demo-disclaimer">Materialet skapas lokalt som en demo från din text, utan en ansluten AI-tjänst.</p>
+          </section>
+        </section>
+
+        <section class="workspace-panel quiz-panel" data-panel="quiz" aria-labelledby="quiz-title" hidden>
+          <div class="panel-heading"><div><span class="panel-overline">SNABBQUIZ · <span class="selected-subject">SVENSKA</span></span><h2 id="quiz-title">Tänk efter – välj ditt svar.</h2><p>En fråga i taget. Här handlar det om att förstå varför.</p></div><span class="panel-symbol" aria-hidden="true">✦</span></div>
+          <div class="quiz-card">
+            <div class="quiz-progress-line"><span id="quiz-number">FRÅGA 1 AV 3</span><span class="quiz-dots" aria-hidden="true"><i class="active"></i><i></i><i></i></span></div>
+            <h3 id="quiz-question"></h3><div class="quiz-options" id="quiz-options"></div>
+            <p class="quiz-feedback" id="quiz-feedback" aria-live="polite"></p>
+            <button class="button button-dark" id="quiz-next" type="button" disabled>Nästa fråga <span aria-hidden="true">→</span></button>
+          </div>
+        </section>
+
+        <section class="workspace-panel cards-panel" data-panel="cards" aria-labelledby="cards-title" hidden>
+          <div class="panel-heading"><div><span class="panel-overline">BEGREPPSKORT · <span class="selected-subject">SVENSKA</span></span><h2 id="cards-title">Hämta fram det du minns.</h2><p>Titta på begreppet, försök förklara det och vänd sedan kortet.</p></div><span class="panel-symbol" aria-hidden="true">▧</span></div>
+          <div class="flashcard-area">
+            <button type="button" class="flashcard" id="flashcard" aria-label="Vänd begreppskortet" aria-pressed="false"><span class="flashcard-count" id="flashcard-count">KORT 1 AV 3</span><span class="flashcard-term" id="flashcard-term"></span><span class="flashcard-hint" id="flashcard-hint">Tryck för att vända ↻</span><span class="flashcard-answer" id="flashcard-answer" hidden></span></button>
+            <div class="flashcard-actions"><button class="subtle-button" id="card-previous" type="button">← Föregående</button><button class="button button-dark" id="card-next" type="button">Kan det! Nästa →</button></div>
+            <p class="flashcard-note" id="flashcard-note" aria-live="polite"></p>
+          </div>
+        </section>
+
+        <section class="workspace-panel tutor-panel" data-panel="tutor" aria-labelledby="tutor-title" hidden>
+          <div class="panel-heading"><div><span class="panel-overline">STUDIEKOMPIS · <span class="selected-subject">SVENSKA</span></span><h2 id="tutor-title">Inga frågor är för små.</h2><p>Berätta vad du undrar – så börjar vi med en enkel förklaring.</p></div><span class="panel-symbol" aria-hidden="true">✳</span></div>
+          <div class="tutor-chat" id="tutor-chat" aria-live="polite">
+            <div class="chat-message coach-message"><span class="chat-avatar" aria-hidden="true">l.</span><p>Hej! Jag är din studiekompis. Vad vill du förstå bättre i <strong class="selected-subject">svenska</strong>?</p></div>
+          </div>
+          <form class="tutor-form" id="tutor-form"><label class="visually-hidden" for="tutor-question">Skriv en fråga</label><input id="tutor-question" type="text" maxlength="280" placeholder="Skriv din fråga här …" required><button class="button button-dark" type="submit">Fråga <span aria-hidden="true">↗</span></button></form>
+          <div class="tutor-prompts"><span>Prova att fråga:</span><button type="button" class="prompt-chip">Kan du förklara det enklare?</button><button type="button" class="prompt-chip">Ge mig ett exempel</button></div>
+          <p class="demo-disclaimer">Studiekompisen ger exempelbaserade svar lokalt i den här demon – ingen riktig AI-tjänst är ansluten.</p>
+        </section>
+        <footer class="workspace-footer"><span>Små steg räknas <i aria-hidden="true">♡</i></span><a href="index.html">Tillbaka till Lärloop</a></footer>
+      </section>
+    </main>
+  </body>
+</html>
